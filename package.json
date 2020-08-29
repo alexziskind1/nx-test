@@ -27,10 +27,14 @@
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "clean": "npx rimraf -- hooks node_modules package-lock.json && npm i",
     "start.web.myweb": "nx serve web-myweb",
+    "start.web.myweb.dev": "nx serve web-myweb --configuration=dev",
+    "start.web.myweb.qa": "nx serve web-myweb --configuration=qa",
     "start.nativescript.mobile.ios": "cd apps/nativescript-mobile && ns debug ios --no-hmr --emulator",
     "start.nativescript.mobile.android": "cd apps/nativescript-mobile && ns debug android --no-hmr --emulator",
     "clean.nativescript.mobile": "cd apps/nativescript-mobile && npx rimraf -- hooks node_modules platforms package-lock.json && npm i && npx rimraf -- package-lock.json",
-    "both": "npm-run-all -p start.web.myweb  start.nativescript.mobile.ios"
+    "both": "npm-run-all -p start.web.myweb  start.nativescript.mobile.ios",
+    "both.dev": "npm-run-all -p start.web.myweb.dev start.nativescript.mobile.ios",
+    "both.qa": "npm-run-all -p start.web.myweb.qa start.nativescript.mobile.ios"
   },
   "private": true,
   "dependencies": {

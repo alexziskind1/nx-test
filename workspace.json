@@ -23,9 +23,7 @@
               "testing/tsconfig.libs.json",
               "testing/tsconfig.libs.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -52,9 +50,7 @@
               "testing/tsconfig.xplat.json",
               "testing/tsconfig.xplat.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -117,6 +113,22 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.qa.ts"
+                }
+              ]
             }
           }
         },
@@ -128,6 +140,12 @@
           "configurations": {
             "production": {
               "browserTarget": "web-myweb:build:production"
+            },
+            "dev": {
+              "browserTarget": "web-myweb:build:dev"
+            },
+            "qa": {
+              "browserTarget": "web-myweb:build:qa"
             }
           }
         },
@@ -144,10 +162,7 @@
               "apps/web-myweb/tsconfig.app.json",
               "apps/web-myweb/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/web-myweb/**/*"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/web-myweb/**/*"]
           }
         },
         "test": {
@@ -182,13 +197,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/web-myweb-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/web-myweb-e2e/**/*"
-            ]
+            "tsConfig": ["apps/web-myweb-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/web-myweb-e2e/**/*"]
           }
         }
       }

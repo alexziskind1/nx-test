@@ -1,1 +1,7 @@
-<div>WEATHER</div>
+<h2>WEATHER</h2>
+
+<ul>
+  <li *ngFor="let item of forecast$ | async">
+    {{ item.temperatureC }}
+  </li>
+</ul>

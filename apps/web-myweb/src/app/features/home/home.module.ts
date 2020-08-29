@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './components';
+import { WeatherModule } from '@myworkspace/web/features/weather';
 
 export const routes: Routes = [
   {
@@ -12,7 +13,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forChild(routes)],
+  imports: [SharedModule, RouterModule.forChild(routes), WeatherModule],
   declarations: [HomeComponent],
   exports: [HomeComponent],
 })

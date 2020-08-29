@@ -14,7 +14,7 @@ export class WeatherService {
   public getWeather(): Observable<WeatherForecast[]> {
     return this.http
       .get<WeatherForecast[]>(
-        'http://webapplication120200828152333.azurewebsites.net/weatherforecast'
+        'http://webapplicationhttp20200828202849.azurewebsites.net/weatherforecast'
       )
       .pipe(tap((r) => console.log(r)));
   }

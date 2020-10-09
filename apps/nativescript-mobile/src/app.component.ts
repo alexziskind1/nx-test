@@ -9,7 +9,7 @@ import { AppBaseComponent, AppService } from '@myworkspace/nativescript';
     <GridLayout>
       <page-router-outlet></page-router-outlet>
     </GridLayout>
-  `
+  `,
 })
 export class AppComponent extends AppBaseComponent {
   constructor(appService: AppService) {

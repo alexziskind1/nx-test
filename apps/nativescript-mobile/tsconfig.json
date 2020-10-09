@@ -13,22 +13,15 @@
     "paths": {
       "~/*": ["src/*"],
       "@myworkspace/*": ["../../libs/*"],
-      "@myworkspace/nativescript": [
-        "../../xplat/nativescript/index.ts"
-      ],
-      "@myworkspace/nativescript/*": [
-        "../../xplat/nativescript/*"
-      ],
+      "@myworkspace/nativescript": ["../../xplat/nativescript/index.ts"],
+      "@myworkspace/nativescript/*": ["../../xplat/nativescript/*"],
       "*": ["./node_modules/*"]
     }
   },
   "files": ["./references.d.ts", "./src/main.ts"],
   "include": [
-    "./src/**/*.module.ts",
     "../../xplat/**/*.{ios,android}.ts",
     "../../xplat/nativescript/workers/**/*.worker.ts"
   ],
-  "exclude": [
-    "../../xplat/nativescript/plugins/**/node_modules/**"
-  ]
+  "exclude": ["../../xplat/nativescript/plugins/**/node_modules/**"]
 }

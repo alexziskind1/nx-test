@@ -1,2 +1,2 @@
 export * from './services';
-export {MyworkspaceCoreModule} from './core.module';
+export { MyworkspaceCoreModule } from './core.module';

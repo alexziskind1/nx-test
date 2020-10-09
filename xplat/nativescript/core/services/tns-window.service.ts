@@ -9,7 +9,7 @@ import * as timer from '@nativescript/core/timer';
 import { isString } from '@myworkspace/utils';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TNSWindowService {
   private _dialogOpened = false;
@@ -17,25 +17,25 @@ export class TNSWindowService {
   public get navigator(): any {
     return {
       language: Device.language,
-      userAgent: 'nativescript'
+      userAgent: 'nativescript',
     };
   }
   public get location(): any {
     return {
-      host: 'nativescript'
+      host: 'nativescript',
     };
   }
 
   public alert(msg: string): Promise<any> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       if (!this._dialogOpened && msg) {
         this._dialogOpened = true;
         if (typeof msg === 'string') {
           const options: dialogs.AlertOptions = {
             message: <string>msg,
-            okButtonText: 'Ok'
+            okButtonText: 'Ok',
           };
-          dialogs.alert(options).then(ok => {
+          dialogs.alert(options).then((ok) => {
             this._dialogOpened = false;
             resolve();
           });
@@ -52,10 +52,10 @@ export class TNSWindowService {
           title: 'Confirm',
           message,
           okButtonText: 'Ok',
-          cancelButtonText: 'Cancel'
+          cancelButtonText: 'Cancel',
         };
 
-        dialogs.confirm(options).then(ok => {
+        dialogs.confirm(options).then((ok) => {
           this._dialogOpened = false;
           if (ok) {
             resolve();

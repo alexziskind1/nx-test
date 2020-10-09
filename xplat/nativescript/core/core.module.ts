@@ -1,14 +1,21 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 
 // nativescript
-import { NativeScriptModule, NativeScriptHttpClientModule } from '@nativescript/angular';
+import {
+  NativeScriptModule,
+  NativeScriptHttpClientModule,
+} from '@nativescript/angular';
 import { Device } from '@nativescript/core';
 import { TNSFontIconModule, USE_STORE } from 'nativescript-ngx-fonticon';
 import { fontAwesomeIcons } from '../utils';
 
 // libs
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { CoreModule, PlatformLanguageToken, PlatformWindowToken } from '@myworkspace/core';
+import {
+  CoreModule,
+  PlatformLanguageToken,
+  PlatformWindowToken,
+} from '@myworkspace/core';
 import { throwIfAlreadyLoaded } from '@myworkspace/utils';
 
 // app
@@ -32,18 +39,18 @@ export function createTranslateLoader() {
     CoreModule.forRoot([
       {
         provide: PlatformLanguageToken,
-        useFactory: platformLangFactory
+        useFactory: platformLangFactory,
       },
       {
         provide: PlatformWindowToken,
-        useClass: TNSWindowService
-      }
+        useClass: TNSWindowService,
+      },
     ]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: createTranslateLoader
-      }
+        useFactory: createTranslateLoader,
+      },
     }),
   ],
   providers: [
@@ -51,10 +58,10 @@ export function createTranslateLoader() {
       // inline icons to avoid extra file handling on app boot
       provide: USE_STORE,
       useValue: {
-        fa: fontAwesomeIcons
+        fa: fontAwesomeIcons,
       },
     },
-  ]
+  ],
 })
 export class MyworkspaceCoreModule {
   constructor(

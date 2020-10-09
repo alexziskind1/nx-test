@@ -23,7 +23,9 @@
               "testing/tsconfig.libs.json",
               "testing/tsconfig.libs.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -50,7 +52,9 @@
               "testing/tsconfig.xplat.json",
               "testing/tsconfig.xplat.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -58,7 +62,7 @@
     "web-myweb": {
       "projectType": "application",
       "schematics": {
-        "@nrwl/angular:component": {
+        "@schematics/angular:component": {
           "style": "scss"
         }
       },
@@ -160,18 +164,20 @@
           "options": {
             "tsConfig": [
               "apps/web-myweb/tsconfig.app.json",
-              "apps/web-myweb/tsconfig.spec.json"
+              "apps/web-myweb/tsconfig.spec.json",
+              "apps/web-myweb/tsconfig.editor.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/web-myweb/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/web-myweb/**/*"
+            ]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/web-myweb/jest.config.js",
-            "tsConfig": "apps/web-myweb/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/web-myweb/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -197,8 +203,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/web-myweb-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/web-myweb-e2e/**/*"]
+            "tsConfig": [
+              "apps/web-myweb-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/web-myweb-e2e/**/*"
+            ]
           }
         }
       }
@@ -214,23 +225,40 @@
         }
       },
       "architect": {
-        "serve": {
+        "default": {
           "builder": "@nrwl/workspace:run-commands",
-          "options": {
-            "commands": [
-              {
-                "command": "yarn start.nativescript.mobile.preview"
-              }
-            ]
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "qa": {
+              "fileReplacements": [
+                {
+                  "replace": "libs/core/environments/environment.ts",
+                  "with": "libs/core/environments/environment.qa.ts"
+                }
+              ]
+            }
           }
         },
         "ios": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
-              {
-                "command": "ns debug ios --no-hmr"
-              }
+              "ns debug ios --no-hmr --env.configuration={args.configuration} --env.projectName=nativescript-mobile"
             ],
             "cwd": "apps/nativescript-mobile",
             "parallel": false
@@ -240,9 +268,7 @@
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
-              {
-                "command": "ns debug android --no-hmr"
-              }
+              "ns debug android --no-hmr --env.configuration={args.configuration} --env.projectName=nativescript-mobile"
             ],
             "cwd": "apps/nativescript-mobile",
             "parallel": false
@@ -252,15 +278,9 @@
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": [
-              {
-                "command": "npx rimraf -- hooks node_modules platforms package-lock.json"
-              },
-              {
-                "command": "npm i"
-              },
-              {
-                "command": "npx rimraf -- package-lock.json"
-              }
+              "ns clean",
+              "npm i",
+              "npx rimraf package-lock.json"
             ],
             "cwd": "apps/nativescript-mobile",
             "parallel": false

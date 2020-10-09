@@ -10,40 +10,19 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@myworkspace/*": [
-        "libs/*"
-      ],
-      "@myworkspace/web": [
-        "xplat/web/index.ts"
-      ],
-      "@myworkspace/web/*": [
-        "xplat/web/*"
-      ],
-      "@myworkspace/nativescript": [
-        "xplat/nativescript/index.ts"
-      ],
-      "@myworkspace/nativescript/*": [
-        "xplat/nativescript/*"
-      ]
+      "@myworkspace/*": ["libs/*"],
+      "@myworkspace/web": ["xplat/web/index.ts"],
+      "@myworkspace/web/*": ["xplat/web/*"],
+      "@myworkspace/nativescript": ["xplat/nativescript/index.ts"],
+      "@myworkspace/nativescript/*": ["xplat/nativescript/*"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp",
-    "apps/nativescript-*"
-  ],
-  "includes": [
-    "xplat/**/*.{ios,android}.ts"
-  ]
+  "exclude": ["node_modules", "tmp", "apps/nativescript-*"],
+  "includes": ["xplat/**/*.{ios,android}.ts"]
 }

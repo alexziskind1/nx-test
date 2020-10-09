@@ -11,18 +11,14 @@
     },
     "tsconfig.base.json": "*",
     "tslint.json": "*",
+    ".eslintrc.json": "*",
     "nx.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
   },
@@ -38,9 +34,7 @@
     },
     "web-myweb-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "web-myweb"
-      ]
+      "implicitDependencies": ["web-myweb"]
     },
     "nativescript-mobile": {
       "tags": []

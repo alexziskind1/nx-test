@@ -6,7 +6,7 @@ import { HeaderBaseComponent } from '@myworkspace/features';
 @Component({
   moduleId: module.id,
   selector: 'myworkspace-header',
-  templateUrl: 'header.component.html'
+  templateUrl: 'header.component.html',
 })
 export class HeaderComponent extends HeaderBaseComponent {
   constructor(private router: RouterExtensions) {

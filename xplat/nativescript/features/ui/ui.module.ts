@@ -1,6 +1,10 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 
-import { NativeScriptCommonModule, NativeScriptFormsModule, NativeScriptRouterModule } from '@nativescript/angular';
+import {
+  NativeScriptCommonModule,
+  NativeScriptFormsModule,
+  NativeScriptRouterModule,
+} from '@nativescript/angular';
 
 import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
 import { UISharedModule } from '@myworkspace/features';
@@ -12,19 +16,17 @@ import { HeaderComponent } from './components';
     NativeScriptFormsModule,
     NativeScriptRouterModule,
     TNSFontIconModule,
-    UISharedModule
+    UISharedModule,
   ],
-  declarations: [
-    HeaderComponent
-  ],
+  declarations: [HeaderComponent],
   exports: [
     NativeScriptCommonModule,
     NativeScriptFormsModule,
     NativeScriptRouterModule,
     TNSFontIconModule,
     UISharedModule,
-    HeaderComponent
+    HeaderComponent,
   ],
-  schemas: [NO_ERRORS_SCHEMA]
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class UIModule {}

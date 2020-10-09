@@ -19,7 +19,7 @@ import { LogService, PlatformLanguageToken } from '@myworkspace/core';
  * - example of global app event wiring for resume/suspend
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppService {
   // fundamentals
@@ -112,7 +112,7 @@ export class AppService {
     this._log.debug('current orientation:', this.orientation);
 
     // handle orientation changes
-    Application.on(Application.orientationChangedEvent, e => {
+    Application.on(Application.orientationChangedEvent, (e) => {
       // sometimes e.newValue will be undefined, ignore those
       if (e.newValue && this.orientation !== e.newValue) {
         orientation = getOrientation();
@@ -127,7 +127,7 @@ export class AppService {
   }
 }
 
-const getOrientation = function() {
+const getOrientation = function () {
   if (isIOS) {
     const deviceOrientation = UIDevice.currentDevice.orientation;
     if (
@@ -144,9 +144,8 @@ const getOrientation = function() {
       return '';
     }
   } else {
-    const orientation = getContext()
-      .getResources()
-      .getConfiguration().orientation;
+    const orientation = getContext().getResources().getConfiguration()
+      .orientation;
     switch (orientation) {
       case 1 /* ORIENTATION_PORTRAIT (0x00000001) */:
         return DeviceOrientation.portrait;
@@ -159,7 +158,7 @@ const getOrientation = function() {
   }
 };
 
-const getContext = function(): android.app.Application {
+const getContext = function (): android.app.Application {
   const ctx = java.lang.Class.forName('android.app.AppGlobals')
     .getMethod('getInitialApplication', null)
     .invoke(null, null);
